@@ -3,8 +3,8 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-  repository: draft
-  tag: dev
+  repository: 10.107.165.65:5000/jarrelc-gmail-com/spring-boot-gradle-test
+  tag: 0.0.1
   pullPolicy: IfNotPresent
 service:
   name: spring-boot-gradle-test
