@@ -18,7 +18,7 @@ pipeline {
         HELM_RELEASE = "$PREVIEW_NAMESPACE".toLowerCase()
       }
       steps {
-        container('gradle') {
+        container('gradle5') {
           sh "gradle clean build"
           sh "export VERSION=$PREVIEW_VERSION && skaffold build -f skaffold.yaml"
           sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:$PREVIEW_VERSION"
@@ -34,7 +34,7 @@ pipeline {
         branch 'master'
       }
       steps {
-        container('gradle') {
+        container('gradle5') {
 
           // ensure we're not on a detached head
           sh "git checkout master"
@@ -55,7 +55,7 @@ pipeline {
         branch 'master'
       }
       steps {
-        container('gradle') {
+        container('gradle5') {
           dir('./charts/spring-boot-gradle-test') {
             sh "jx step changelog --version v\$(cat ../../VERSION)"
 
